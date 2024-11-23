@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   const query = 'SELECT * FROM pupuk';
   db.query(query, (err, results) => {
     if (err) throw err;
-    res.render('tampilan-pupuk-buat-mysqll/list', { pupuk: results });
+    res.render('tampilan-pupuk-buat-mysql/list', { pupuk: results });
   });
 });
 
@@ -23,7 +23,7 @@ router.post('/add', (req, res) => {
   const query = 'INSERT INTO pupuk (namapupuk, tipepupuk) VALUES (?, ?)';
   db.query(query, [nama, jenis], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-pupuk-buat-mysql');
+    res.redirect('/pupuk-mysql');
   });
 });
 
@@ -44,7 +44,7 @@ router.post('/edit/:id', (req, res) => {
   const query = 'UPDATE pupuk SET namapupuk = ?, tipepupuk = ? WHERE id = ?';
   db.query(query, [nama, jenis, id], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-pupuk-buat-mysql');
+    res.redirect('/pupuk-mysql');
   });
 });
 
@@ -54,7 +54,7 @@ router.get('/delete/:id', (req, res) => {
   const query = 'DELETE FROM pupuk WHERE id = ?';
   db.query(query, [id], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-pupuk-buat-mysql');
+    res.redirect('/pupuk-mysql');
   });
 });
 

@@ -11,28 +11,48 @@
   <div class="container mt-5">
     <h1 class="text-center mb-4">Edit Bibit</h1>
 
-    <% bibit.forEach(bbt => { %>
-
-      <div class="card p-4">
-        <form action="/edit/<%= bbt.id %>" method="get">
-          <div class="mb-3">
-            <label for="nama" class="form-label">Nama Bibit:</label>
-            <input type="text" class="form-control" id="nama" name="nama" value="<%= bbt.nama %>" required>
-          </div>
-  
-          <div class="mb-3">
-            <label for="jenis" class="form-label">Jenis Bibit:</label>
-            <input type="text" class="form-control" id="jenis" name="jenis" value="<%= bbt.jenis %>" required>
-          </div>
-  
-          <button type="submit" class="btn btn-warning w-100">Simpan</button>
-        </form>
-  
-        <a href="/bibit" class="btn btn-secondary w-100 mt-3">Kembali ke Daftar Bibit</a>
-      </div>
+    <div class="mb-3">
+      <a href="/bibit/add" class="btn btn-success">Tambah Bibit</a>
+      <a href="/bibit-mysql" class="btn btn-info">Bibit MySql</a>
+      <a href="/pupuk" class="btn btn-primary">Ke Pupuk Mock Database</a>
     </div>
-     
-    <% }) %>
+
+    <!-- Tabel Daftar Bibit -->
+    <% if (bibit && bibit.length> 0) { %>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Jenis</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bibit.forEach(item=> { %>
+            <tr>
+              <td>
+                <%= item.id %>
+              </td>
+              <td>
+                <%= item.nama %>
+              </td>
+              <td>
+                <%= item.jenis %>
+              </td>
+              <td>
+                <a href="bibit/edit/<%= item.id %>" class="btn btn-warning btn-sm">Edit</a> |
+                <a href="/bibit/delete/<%= item.id %>" class="btn btn-danger btn-sm"
+                  onclick="return confirm('Hapus data ini?');">Hapus</a>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <p>Tidak ada data bibit.</p>
+        <% } %>
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

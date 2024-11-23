@@ -16,24 +16,23 @@
     <!-- Link untuk menambah bibit dan navigasi lainnya -->
     <div class="mb-3">
       <a href="/bibit-mysql/add" class="btn btn-success">Tambah Bibit</a>
-      <a href="/pupuk-mysql" class="btn btn-info">Pupuk MySql</a>
+      <a href="/bibit" class="btn btn-info">Kembali ke Mockup Bibit</a>
       <a href="/pupuk" class="btn btn-primary">Ke Pupuk Mock Database</a>
     </div>
 
     <!-- Tabel Daftar Bibit -->
-    <% if (bibit && bibit.length> 0) { %>
+    <% if (results && results.length> 0) { %>
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
             <th>ID</th>
             <th>Nama</th>
             <th>Jenis</th>
-            <th>Waktu Dibuat</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          <% bibit.forEach(item=> { %>
+          <% results.forEach(item=> { %>
             <tr>
               <td>
                 <%= item.id %>
@@ -43,9 +42,6 @@
               </td>
               <td>
                 <%= item.tipe_bibit %>
-              </td>
-              <td>
-                <%= item.waktu_dibuat %>
               </td>
               <td>
                 <a href="bibit-mysql/edit/<%= item.id %>" class="btn btn-warning btn-sm">Edit</a> |

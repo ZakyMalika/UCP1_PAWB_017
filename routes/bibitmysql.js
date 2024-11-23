@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const query = 'SELECT * FROM bibit';
   db.query(query, (err, results) => {
     if (err) throw err;
-    res.render('tampilan-bibit-buat-mysql/list', { bibit: results });
+    res.render('tampilan-bibit-buat-mysql/list', { results });
   });
 });
 
@@ -22,7 +22,7 @@ router.post('/add', (req, res) => {
   const query = 'INSERT INTO bibit (nama_bibit, tipe_bibit) VALUES (?, ?)';
   db.query(query, [nama, jenis], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-bibit-buat-mysql');
+    res.redirect('/bibit-mysql');
   });
 });
 
@@ -43,7 +43,7 @@ router.post('/edit/:id', (req, res) => {
   const query = 'UPDATE bibit SET nama_bibit = ?, tipe_bibit = ? WHERE id = ?';
   db.query(query, [nama, jenis, id], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-bibit-buat-mysql');
+    res.redirect('/bibit-mysql');
   });
 });
 
@@ -53,7 +53,7 @@ router.get('/delete/:id', (req, res) => {
   const query = 'DELETE FROM bibit WHERE id = ?';
   db.query(query, [id], (err) => {
     if (err) throw err;
-    res.redirect('/tampilan-bibit-buat-mysql');
+    res.redirect('/bibit-mysql');
   });
 });
 

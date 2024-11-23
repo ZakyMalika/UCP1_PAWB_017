@@ -23,7 +23,7 @@ router.post('/add', (req, res) => {
   const { nama, jenis } = req.body;
   const newPupuk = { id: pupuk.length + 1, nama, jenis };
   pupuk.push(newPupuk);
-  res.redirect('/tampilan-pupuk');
+  res.redirect('/pupuk');
 });
 
 // Form edit Pupuk
@@ -40,13 +40,13 @@ router.post('/edit/:id', (req, res) => {
   if (index !== -1) {
     pupuk[index] = { id: parseInt(req.params.id), nama, jenis };
   }
-  res.redirect('/tampilan-pupuk');
+  res.redirect('/pupuk');
 });
 
 // Menghapus Pupuk
 router.get('/delete/:id', (req, res) => {
   pupuk = pupuk.filter(p => p.id !== parseInt(req.params.id));
-  res.redirect('/tampilan-pupuk');
+  res.redirect('/pupuk');
 });
 
 module.exports = router;
