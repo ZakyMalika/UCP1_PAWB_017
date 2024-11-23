@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Mockup data Pupuk
-let pupuk = [
+let pupuk = [ 
   { id: 1, nama: 'kompos basah', jenis: 'Kimia 100%' },
   { id: 2, nama: 'Kompos kering', jenis: 'Organik 79%' },
 ];
