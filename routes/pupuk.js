@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Mockup data Pupuk
-let pupuk = [ 
+let pupuk = [
   { id: 1, nama: 'kompos basah', jenis: 'Kimia 100%' },
   { id: 2, nama: 'Kompos kering', jenis: 'Organik 79%' },
 ];
@@ -29,6 +29,7 @@ router.post('/add', (req, res) => {
 // Form edit Pupuk
 router.get('/edit/:id', (req, res) => {
   const data = pupuk.find(p => p.id === parseInt(req.params.id));
+  console.log(data)
   res.render('tampilan-pupuk/edit', { data });
 });
 

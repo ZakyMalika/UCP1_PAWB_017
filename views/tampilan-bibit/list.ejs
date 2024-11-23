@@ -11,24 +11,28 @@
   <div class="container mt-5">
     <h1 class="text-center mb-4">Edit Bibit</h1>
 
-    <div class="card p-4">
-      <form action="/bibit/edit/<%= data.id %>" method="POST">
-        <div class="mb-3">
-          <label for="nama" class="form-label">Nama Bibit:</label>
-          <input type="text" class="form-control" id="nama" name="nama" value="<%= data.nama %>" required>
-        </div>
+    <% bibit.forEach(bbt => { %>
 
-        <div class="mb-3">
-          <label for="jenis" class="form-label">Jenis Bibit:</label>
-          <input type="text" class="form-control" id="jenis" name="jenis" value="<%= data.jenis %>" required>
-        </div>
-
-        <button type="submit" class="btn btn-warning w-100">Simpan</button>
-      </form>
-
-      <a href="/bibit" class="btn btn-secondary w-100 mt-3">Kembali ke Daftar Bibit</a>
+      <div class="card p-4">
+        <form action="/edit/<%= bbt.id %>" method="get">
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama Bibit:</label>
+            <input type="text" class="form-control" id="nama" name="nama" value="<%= bbt.nama %>" required>
+          </div>
+  
+          <div class="mb-3">
+            <label for="jenis" class="form-label">Jenis Bibit:</label>
+            <input type="text" class="form-control" id="jenis" name="jenis" value="<%= bbt.jenis %>" required>
+          </div>
+  
+          <button type="submit" class="btn btn-warning w-100">Simpan</button>
+        </form>
+  
+        <a href="/bibit" class="btn btn-secondary w-100 mt-3">Kembali ke Daftar Bibit</a>
+      </div>
     </div>
-  </div>
+     
+    <% }) %>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
