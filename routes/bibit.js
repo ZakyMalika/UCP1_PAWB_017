@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // Mockup data Bibit
-let bibit = [
+let bibit = [ 
   { id: 1, nama: 'Bibit singkong', jenis: 'amplaz' },
   { id: 2, nama: 'Bibit kangkung', jenis: 'pakuwon' },
 ];
